@@ -1,0 +1,1018 @@
+html .loader {
+	background: #fff;
+	bottom: 0;
+	height: 100%;
+	left: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+	width: 100%;
+	z-index: 9999
+}
+
+html .loader .loader_inner {
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-color: #fff;
+	height: 200px;
+	width: 200px;
+	margin-top: -100px;
+	margin-left: -100px;
+	left: 50%;
+	top: 50%;
+	position: absolute
+}
+.clearfix::after{display:block;content:""}
+.img-fluid{max-width: 100%;height: auto;}
+
+@import '../libs/bootstrap-grid.min';
+@import 'utils/fonts.scss';
+@import 'utils/vars.scss';
+@import 'utils/mixins.scss';
+@import 'libs.scss';
+
+html.modal {
+	margin-right: 12px !important;
+}
+
+html,
+body {
+	font-size: 16px;
+}
+
+html.sticky-footer,
+body.sticky-footer {
+	height: 100%;
+}
+
+html.slidebars,
+body.slidebars {
+	width: 100%;
+	overflow: hidden !important;
+}
+
+body input:focus:required:invalid,
+body textarea:focus:required:invalid {
+	color: #666;
+}
+
+body input:required:valid,
+body textarea:required:valid {
+	color: #666;
+}
+
+button:not(:disabled):not(.disabled) {
+	cursor: pointer;
+}
+
+*::-webkit-input-placeholder {
+	color: #666;
+	opacity: 1;
+}
+
+*:-moz-placeholder {
+	color: #666;
+	opacity: 1;
+}
+
+*::-moz-placeholder {
+	color: #666;
+	opacity: 1;
+}
+
+*:-ms-input-placeholder {
+	color: #666;
+	opacity: 1;
+}
+
+body {
+	margin: 0;
+	min-width: 320px;
+	position: relative;
+	line-height: 1.2;
+	font-family: $font_main_regular;
+	overflow-x: hidden;
+	color: $main_txt_color;
+	-webkit-tap-highlight-color: transparent;
+	//внешний вид скроллбара
+	scrollbar-base-color: $main_color;//для IE
+	scrollbar-arrow-color: $main_color; //для IE
+	//внешний вид скроллбара для -webkit- остальное тут https://poselab.com/en/blog/custom-scrollbars-in-webkit/
+	&::-webkit-scrollbar {
+		width: 12px;
+	}
+	&::-webkit-scrollbar-thumb {
+		background-color: $main_color;
+		&:hover {
+			background-color: darken($main_color, 10%);
+		}
+	}
+	&::-webkit-scrollbar-track-piece {
+		background-color: transparent;
+	}
+}
+//-webkit-font-smoothing: antialiased
+//-moz-osx-font-smoothing: grayscale
+
+// перебиваем у всех заголовков стили браузера  -webkit-margin-before и     -webkit-margin-after  (margin-bottom и margin-top соотвественно)
+h1 {
+	margin-bottom: 0.83em;
+	margin-top: 0.83em;
+}
+
+h2 {
+	margin-bottom: 0.83em;
+	margin-top: 0.83em;
+}
+
+p,
+ul {
+	padding: 0;
+	margin: 0;
+}
+
+li {
+	list-style: none;
+}
+
+.noselect {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+// добавляет правильное свойство
+.swiper-wrapper {
+	box-sizing: border-box;
+}
+
+.hidden {
+	display: none;
+}
+// Модальное окно
+.white-popup {
+	width: 470px;
+	margin: auto;
+	max-width: 50em;
+	padding: 50px 46px 50px 46px;
+	text-align: center;
+	position: relative;
+	background-color: #fff;
+	border-radius: 5px;
+	transition: 0.5s;
+	p.modal-title {
+		@include font($main_txt_color, 24, $font_main_regular, 1.4);
+	}
+	p.modal-paragraph {
+		margin-bottom: 10px;
+		@include font($main_txt_color, 14, $font_main_regular, 1.4);
+	}
+	&#popup-success {
+		p.success_mail {
+			display: block;
+		}
+		.mfp-close {
+			display: none;
+		}
+	}
+	&#popup3 {
+		width: inherit;
+		padding: 0;
+		border: none;
+		background-color: transparent;
+		ul {
+			padding: 0;
+		}
+		li {
+			list-style: none;
+			a {
+				font-size: 30px;
+				color: #fff;
+			}
+		}
+		.mfp-close {
+			display: none;
+		}
+	}
+	.input-wrap {
+		position: relative;
+		display: block;
+		margin-bottom: 10px;
+		& > i {
+			display: none;
+			position: absolute;
+			top: 50%;
+			right: 16px;
+			transform: translateY(-45%);
+			@include fz(14);
+			color: #35be70;
+		}
+	}
+	label {
+		margin-bottom: 7px;
+		margin-left: 5px;
+		text-align: left;
+		display: block;
+		font-family: $font_main_regular;
+		@include fz(14);
+		color: $main_txt_color;
+		&.active {
+			color: $main_color;
+		}
+	}
+	input {
+		width: 100%;
+		height: 40px;
+		padding-left: 20px;
+		padding-right: 37px;
+		color: #3a4763;
+		@include fz(14);
+		border: 1px solid #cdcdcd;
+		background-color: #ffffff;
+		border-radius: 5px;
+		transition: 1s;
+		&:focus {
+			outline: 0;
+		}
+	}
+	textarea {
+		width: 100%;
+		min-height: 100px;
+		margin-bottom: 10px;
+		padding-left: 20px;
+		padding-right: 37px;
+		color: #3a4763;
+		@include fz(14);
+		border: 1px solid #cdcdcd;
+		background-color: #ffffff;
+		border-radius: 5px;
+		transition: 1s;
+		&:focus {
+			outline: 0;
+		}
+	}
+	.success_mail {
+		@include font($main_color, 24, $font_main_regular, 1.1);
+		display: none;
+		&.active {
+			display: block;
+		}
+	}
+	input[type=submit] {
+		margin-bottom: 0;
+		margin-top: 20px;
+		padding-left: 0;
+		padding-right: 0;
+		cursor: pointer;
+		@extend .main-btn;
+		&:focus {
+			outline: 0;
+		}
+	}
+	.select {
+		position: relative;
+		text-align: left;
+		margin-bottom: 30px;
+		.select__drop {
+			width: 100%;
+			max-height: 200px;
+			overflow: auto;
+			margin: 0 auto;
+			padding: 0;
+			border-top: none;
+			display: none;
+			position: absolute;
+			background-color: #F4F4F4;
+			top: 100%;
+			left: 0;
+			right: 0;
+			z-index: 12;
+			li {
+				display: flex;
+				align-items: center;
+				list-style: none;
+				border-bottom: none;
+				border-top: none;
+				cursor: pointer;
+				@include font($auxiliary_txt_color, 18, $font_main_regular, 1.2);
+				padding: 7px 15px 7px 25px;
+				&:hover {
+					background-color: rgba(0, 0, 0, 0.2);
+					outline: 0;
+				}
+				a {
+					text-decoration: none;
+				}
+				img {
+					margin-right: 10px;
+				}
+			}
+			//внешний вид скроллбара
+			scrollbar-base-color: $main_color; //для IE
+			scrollbar-arrow-color: $main_color; //для IE
+			//внешний вид скроллбара для -webkit- остальное тут https://poselab.com/en/blog/custom-scrollbars-in-webkit/
+			&::-webkit-scrollbar {
+				width: 5px;
+			}
+			&::-webkit-scrollbar-thumb {
+				background-color: $main_color;
+				&:hover {
+					background-color: darken($main_color, 10%);
+				}
+			}
+			&::-webkit-scrollbar-track-piece {
+				background-color: lighten($main_color, 60%);
+			}
+		}
+		.select__link {
+			width: 100%;
+			height: 40px;
+			padding-left: 25px;
+			padding-right: 30px;
+			display: flex;
+			align-items: center;
+			@include font(#000, 18, $font_main_regular, 1.2);
+			background-color: #F4F4F4;
+			box-shadow: 0 1px 0 rgba(0, 0, 2, .28);
+			text-decoration: none;
+			position: relative;
+			transition: color 1s;
+			&.active {
+				color: #000;
+				background-color: #F4F4F4;
+			}
+			span {
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				-o-text-overflow: ellipsis;
+			}
+			img {
+				margin-right: 10px;
+			}
+		}
+		.select__arrow {
+			position: absolute;
+			top: 50%;
+			right: 10px;
+			cursor: pointer;
+			transform: translateY(-45%);
+			z-index: 10;
+			i {
+				@include fz(24);
+				color: #000;
+				display: inline-block;
+				position: relative;
+				z-index: 10;
+				transition: 0.3s;
+			}
+			&.active i {
+				transform: rotate(180deg);
+			}
+		}
+	}
+}
+.mfp-zoom-in.mfp-ready.mfp-bg {
+	opacity: 0.7;
+}
+.mfp-bg {
+	background: rgba(11, 11, 11, 0.46);
+}
+.mfp-close-btn-in .mfp-close {
+	position: absolute;
+	right: 10px;
+	top: -30px;
+	display: block;
+	color: transparent;
+	transition: top 0.5s;
+	&:hover i {
+		color: $main_color;
+	}
+	i {
+		color: #ffffff;
+		transition: color 0.5s;
+		@include fz(18);
+	}
+	&:hover {
+		outline: 0;
+	}
+	&:active {
+		outline: 0;
+	}
+	&:focus {
+		outline: 0;
+	}
+}
+// конец модального
+// для формы normal обёртка и иконка success
+.input-wrap {
+	position: relative;
+	display: block;
+}
+
+.input-wrap>i {
+	display: none;
+	position: absolute;
+	top: 50%;
+	right: 16px;
+	transform: translateY(-45%);
+	font-size: 14px;
+	color: #35be70;
+}
+
+#form-file .file_wrap {
+	margin-bottom: 20px;
+}
+// Общие стили на select2
+.select2-wrap {
+	width: 100%;
+	text-align: left;
+}
+
+.select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b {
+	border-color: transparent transparent $main_color transparent;
+}
+
+.select2-container--default .select2-selection--single {
+	border-radius: 15px;
+	outline-color: transparent;
+	transition: border 0.5s;
+}
+
+.select2-container--default .select2-selection--single:hover {
+	border: 1px solid $main_color;
+}
+
+.select2-container--default .select2-selection--single:active {
+	border: 1px solid $main_color;
+}
+
+.select2-container--default .select2-selection--single:focus {
+	border: 1px solid $main_color;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow b {
+	border-color: $main_color transparent transparent transparent;
+	left: 0;
+}
+
+.select2-container--default .select2-search--dropdown .select2-search__field:hover {
+	outline-color: $main_color;
+}
+
+.select2-container--default .select2-search--dropdown .select2-search__field:active {
+	outline-color: $main_color;
+}
+
+.select2-container--default .select2-search--dropdown .select2-search__field:focus {
+	outline-color: $main_color;
+}
+
+.select2-container--default .select2-selection--single {
+	font-size: 14px;
+	line-height: 27px;
+	padding-left: 20px;
+	outline-color: transparent;
+}
+
+.select2-container--default .select2-selection--single:hover {
+	outline-color: transparent;
+}
+
+.select2-container--default .select2-selection--single:active {
+	outline-color: transparent;
+}
+
+.select2-container--default .select2-selection--single:focus {
+	outline: none;
+	outline-color: transparent;
+}
+
+.select2-container--default .select2-results__option {
+	font-size: 14px;
+	padding-left: 28px;
+	transition: 0.3s;
+}
+
+.select2-container--default .select2-results__option span {
+	display: inline-block;
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+	background-color: $main_color;
+}
+.select2-container--default .select2-results>.select2-results__options {
+	//внешний вид скроллбара
+	scrollbar-base-color: $main_color; //для IE
+	scrollbar-arrow-color: $main_color; //для IE
+	//внешний вид скроллбара для -webkit- остальное тут https://poselab.com/en/blog/custom-scrollbars-in-webkit/
+	&::-webkit-scrollbar {
+		width: 5px;
+	}
+	&::-webkit-scrollbar-thumb {
+		background-color: $main_color;
+		&:hover {
+			background-color: darken($main_color, 10%);
+		}
+	}
+	&::-webkit-scrollbar-track-piece {
+		background-color: lighten($main_color, 60%);
+	}
+}
+// Бутерброд
+.no-touch #nav-button-label:hover .nav-line {
+	background: $main_bg_color;
+}
+
+.touch #nav-button-label:active .nav-line {
+	background: $main_bg_color;
+}
+
+#nav-button-label {
+	height: 35px;
+	width: 50px;
+	transition: 0.4s;
+	margin-top: 6px;
+	cursor: pointer;
+	position: relative;
+	z-index: 1002;
+	pointer-events: all;
+}
+
+.nav-on .nav-line:first-child,
+.nav-on .nav-line:last-child {
+	transition: 0.5s;
+	width: 0;
+	opacity: 0;
+	left: 50%;
+	top: 11px;
+}
+
+.nav-on #nav-button-label .nav-line {
+	margin: 0;
+}
+
+.nav-on .nav-line:nth-child(2) {
+	transition: 0.5s;
+	transform: rotate(45deg);
+}
+
+.nav-on .nav-line:nth-child(3) {
+	transition: 0.5s;
+	transform: rotate(-45deg);
+}
+
+label {
+	display: inline-block;
+	max-width: 100%;
+	font-weight: 700;
+}
+
+.nav-line {
+	display: block;
+	height: 3px;
+	background: #fff;
+	position: absolute;
+	left: 0;
+	width: 100%;
+	transition: 2s;
+}
+
+.nav-line.active {
+	background: $main_color;
+}
+
+.nav-line:nth-child(2) {
+	-webkit-transition: 0.5s;
+	-o-transition: 0.5s;
+	transition: 0.5s;
+	top: 14px;
+}
+
+.nav-line:nth-child(1) {
+	-webkit-transition: 0.5s;
+	-o-transition: 0.5s;
+	transition: 0.5s;
+	top: 0;
+}
+
+.nav-line:nth-child(4) {
+	-webkit-transition: 0.5s;
+	-o-transition: 0.5s;
+	transition: 0.5s;
+	top: 28px;
+}
+
+.nav-line:nth-child(3) {
+	-webkit-transition: 0.5s;
+	-o-transition: 0.5s;
+	transition: 0.5s;
+	top: 14px;
+}
+// оформление общего вид select
+.select {
+	position: relative;
+	text-align: left;
+	.select__drop {
+		width: 100%;
+		max-height: 200px;
+		overflow: auto;
+		margin: 0 auto;
+		padding: 0;
+		border-top: none;
+		display: none;
+		position: absolute;
+		background-color: #F4F4F4;
+		top: 100%;
+		left: 0;
+		right: 0;
+		z-index: 12;
+		li {
+			list-style: none;
+			border-bottom: none;
+			border-top: none;
+			cursor: pointer;
+			display: block;
+			@include font($auxiliary_txt_color, 18, $font_main_regular, 1.2);
+			padding: 7px 15px 7px 25px;
+			transition: 0.5s;
+			&:hover {
+				background-color: rgba(0, 0, 0, 0.2);
+				outline: 0;
+			}
+			a {
+				text-decoration: none;
+			}
+		}
+		//внешний вид скроллбара
+		scrollbar-base-color: $main_color; //для IE
+		scrollbar-arrow-color: $main_color; //для IE
+		//внешний вид скроллбара для -webkit- остальное тут https://poselab.com/en/blog/custom-scrollbars-in-webkit/
+		&::-webkit-scrollbar {
+			width: 5px;
+		}
+		&::-webkit-scrollbar-thumb {
+			background-color: $main_color;
+			&:hover {
+				background-color: darken($main_color, 10%);
+			}
+		}
+		&::-webkit-scrollbar-track-piece {
+			background-color: lighten($main_color, 60%);
+		}
+	}
+	.select__link {
+		width: 100%;
+		height: 40px;
+		padding-left: 25px;
+		padding-right: 30px;
+		display: flex;
+		align-items: center;
+		@include font(#fff, 18, $font_main_regular, 1.2);
+		background-color: rgba(0, 0, 0, 0.6);
+		text-decoration: none;
+		position: relative;
+		transition: color 0.5s, background-color 0.5s;
+		&.active {
+			color: #000;
+			background-color: #F4F4F4;
+		}
+		span {
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			-o-text-overflow: ellipsis;
+		}
+	}
+	.select__arrow {
+		display: flex;
+		align-items: center;
+		position: absolute;
+		top: 50%;
+		right: 10px;
+		cursor: pointer;
+		transform: translateY(-45%);
+		z-index: 10;
+		i {
+			@include fz(24);
+			color: #000;
+			display: inline-flex;
+			position: relative;
+			z-index: 10;
+			transition: 0.3s;
+			&.active i {
+				transform: rotate(180deg);
+			}
+		}
+	}
+}
+// внешний вид табов и анимация
+.tabs-all-items-wrap {
+	margin-bottom: 30px;
+}
+.tabs-items-wrap {
+	margin-bottom: 10px;
+}
+.tabs-item {
+	&.active {
+		background-color: #fff;
+		border: 1px solid $main_color;
+		color: $main_color;
+	}
+}
+.tabs-wrap {
+	display: none;
+	padding: 20px;
+	background-color: rgba(255, 255, 255, 0.5);
+	&.active {
+		display: block;
+		animation: fade-bot;
+		animation-duration: 0.7s;
+	}
+}
+.tabs-wrap-inner {
+	display: none;
+	padding: 20px;
+	&.active {
+		display: block;
+		animation: fade;
+		animation-delay: 0.3s;
+		animation-fill-mode: backwards;
+		animation-duration: 0.7s !important; // почему то при build стили объединяются с .tabs-wrap и не работает animation-duration, приходится !important применять
+	}
+}
+@keyframes fade {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+@keyframes fade-bot {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+// Оформление слайдбара
+[canvas] {
+	transform: inherit;
+}
+[off-canvas] {
+	transition: transform 0.4s;
+	overflow: auto;
+	-webkit-overflow-scrolling: touch;
+}
+[off-canvas*=left] {
+	width: 255px;
+}
+[canvas=container] {
+	background-color: transparent;
+	-webkit-tap-highlight-color: transparent;
+	&.sticky-footer {
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+		//внешний вид скроллбара
+		scrollbar-base-color: $main_color; //для IE
+		scrollbar-arrow-color: $main_color; //для IE
+		//внешний вид скроллбара для -webkit- остальное тут https://poselab.com/en/blog/custom-scrollbars-in-webkit/
+		&::-webkit-scrollbar {
+			width: 12px;
+		}
+		&::-webkit-scrollbar-thumb {
+			background-color: $main_color;
+			&:hover {
+				background-color: darken($main_color, 10%);
+			}
+		}
+		&::-webkit-scrollbar-track-piece {
+			background-color: transparent;
+		}
+	}
+}
+nav[canvas] {
+	position: fixed;
+	top: 20px;
+	left: 20px;
+	display: none;
+	z-index: 100;
+}
+[class*=js-open-], [class*=js-toggle-], [class*=js-close-] {
+	cursor: pointer;
+}
+[off-canvas] {
+	ul {
+		&.menu {
+			margin: 0;
+			padding: 0;
+			display: block;
+			list-style: none;
+		}
+	}
+}
+.sticky-section {
+	flex: 1 0 auto;
+}
+// Header
+.header {
+	width: 100%;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	flex: 0 0 auto;
+	background-color: transparent;
+	position: absolute;
+	z-index: 10;
+	.row {
+		align-items: center;
+	}
+}
+.header__logo {
+	display: inline-block;
+	margin-left: 15px;
+	a {
+		color: #fff;
+		@include fz(34);
+		font-family:$font_main_regular;
+		&:hover {
+			text-decoration: none;
+		}
+	}
+}
+.header__nav {
+	display: inline-block;
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	ul {
+		li {
+			list-style: none;
+			display: inline-block;
+			a {
+				margin-right: 15px;
+				color: #fff;
+				@include fz(16);
+				text-decoration: none;
+				transition: .5s;
+				&:hover {
+					color: $main_color;
+					text-decoration: none;
+				}
+				&:active {
+					color: $main_color;
+					text-decoration: none;
+				}
+				&:focus {
+					color: $main_color;
+					text-decoration: none;
+				}
+			}
+		}
+	}
+}
+.header__modal {
+	display: inline-block;
+	&.last {
+		a {
+			&:after {
+				@include css-triangle(#fff, up, 10px);
+				top: calc(50% - 5px);
+				right: -20px;
+				transition: 0.5s;
+			}
+			&:hover:after {
+				transform: rotate(180deg);
+			}
+		}
+	}
+	a {
+		margin-left: 15px;
+		padding: 10px 15px;
+		@include font(#fff, 17, $font_main_regular);
+		border: 2px solid #FFF;
+		border-radius: 10px;
+		text-decoration: none;
+		transition: .5s;
+		position: relative;
+		&:hover {
+			border: 2px solid transparent;
+			background-color: #ff9600;
+			color: #fff;
+		}
+	}
+}
+// Пример checkbox
+@keyframes checkColor {
+	from {
+		color: #727272;
+	}
+	to {
+		color: $main_color;
+	}
+}
+@keyframes checkColorBack {
+	from {
+		color: $main_color;
+	}
+	to {
+		color:#000;
+	}
+}
+label.check,
+label.radio {
+	display: inline-flex;
+	align-items: center;
+	color: #000;
+	cursor: pointer;
+	font-size: 14px;
+	user-select: none;
+}
+
+label.check i,
+label.radio i {
+	width: 11px;
+	display: inline-flex;
+	margin-right: 10px;
+	font-size: 14px;
+	animation: checkColorBack;
+	animation-duration: 0.7s;
+	animation-direction: alternate;
+	animation-fill-mode: forwards;
+}
+
+label.check span,
+label.radio span {
+	display: inline-block;
+	font-size: 14px;
+}
+
+label.check input[type=checkbox],
+label.radio input[type=checkbox],
+label.check input[type=radio],
+label.radio input[type=radio] {
+	position: absolute;
+	clip: rect(0 0 0 0);
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+}
+
+label.check input[type=checkbox]:not(:checked) ~ .fa-2,
+label.radio input[type=checkbox]:not(:checked) ~ .fa-2,
+label.check input[type=radio]:not(:checked) ~ .fa-2,
+label.radio input[type=radio]:not(:checked) ~ .fa-2 {
+	display: none;
+}
+
+label.check input[type=checkbox]:checked ~ i.fa-1,
+label.radio input[type=checkbox]:checked ~ i.fa-1,
+label.check input[type=radio]:checked ~ i.fa-1,
+label.radio input[type=radio]:checked ~ i.fa-1 {
+	display: none;
+}
+
+label.check input[type=checkbox]:checked ~ i.fa-2,
+label.radio input[type=checkbox]:checked ~ i.fa-2,
+label.check input[type=radio]:checked ~ i.fa-2,
+label.radio input[type=radio]:checked ~ i.fa-2 {
+	display: inline-flex;
+	animation: checkColor;
+	animation-duration: 0.7s;
+	animation-direction: alternate;
+	animation-fill-mode: forwards;
+}
+.visually-hidden {
+	position: absolute;
+	clip: rect(0 0 0 0);
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+}
+//	Секция
+//	Секция
+.footer {
+	background-color: #333;
+	height: 200px;
+	flex: 0 0 auto;
+}
+.icon-vk {
+	width: 30px;
+	height: 30px;
+	fill: red;
+}
+//Модули
+@import "modules/modules.scss";
+
+// СТРАНИЦЫ
+// Главная страница
+@import 'pages/index/index.scss';
+// media
+@import '_media.scss';

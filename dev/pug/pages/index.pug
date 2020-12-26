@@ -1,0 +1,178 @@
+extends ../layout/main
+
+block variables
+	- var title = 'Главная страница'
+	- var pageClass = 'index'
+
+block main
+	+b.SECTION.top-section
+		.container
+			.row
+				+e.title
+					h1 #[span ФУНКЦИОНАЛЬНЫЕ] ЛЕНДИНГИ НА ЗАКАЗ
+					p для максимального удобства
+					a(href="#" class="main-btn") проверка
+					hr
+					button.open-popup-link.main-btn(data-effect="mfp-zoom-in" data-mfp-src="#popup") проверка
+				+e.bot-txt
+					p
+						| Более #[span  400]
+						| довольных клиентов за
+						| #[span  8 лет]
+						|  успешной работы!
+	// Секция  our_advantages
+	+b.SECTION#our_advantages.our-advantages(data-sticky-container="")
+		.container
+			+e.title
+				// подробности по библиотеке https://github.com/rgalus/sticky-js
+				h2.sticky(data-sticky-for="1200" data-sticky-class="is-sticky" data-margin-top="0") Наши преимущества
+			div
+				img(src="img/garant.svg")
+			.select
+				.select__arrow
+					i
+						i.fas.fa-angle-down
+				a.select__link(href="#") #[ span Пример селекта не в модальном] окне):
+				ul.select__drop
+					li
+						span Вы крутые
+					li
+						span Вы крутые
+					li
+						span Я в Вас влюбился
+					li
+						span Я в Вас влюбился
+					li
+						span Быстрей Вас только Флеш
+					li
+						span Быстрей Вас только Флеш
+					li
+						span Быстрей Вас только Флеш
+				input(type="hidden" name="services")
+			// пример миксинов
+			+icon('vk')
+			+icon('google-plus')
+			+list('my-list', 'Номер 1', 'Номер 2', 'Номер 3', 'Номер 4')
+			.row
+				+e.item.col-lg-4.col-md-6
+					.our-advantages__img
+						i.fa.fa-users
+					h3 Заголовок
+					p Индивидуальный подход к каждому клиенту
+				+e.item.col-lg-4.col-md-6
+					+e.img
+						i.fas.fa-gem
+					h3 Заголовок
+					p Неповторимость и практичность каждого проекта мебели
+				+e.item.col-lg-4.col-md-6
+					+e.img
+						i.fa.fa-list-ol
+					h3 Заголовок
+					p Многообразие материалов и стилевых решений
+				+e.item.col-lg-4.col-md-6
+					+e.img
+						i.fas.fa-pencil-alt
+					h3 Заголовок
+					p Для вас бесплатно: замер, дизайн-проект, доставка и монтаж
+				+e.item.col-lg-4.col-md-6
+					+e.img
+						i.fas.fa-credit-card
+					h3 Заголовок
+					p Возможность оформления мебели в кредит
+				+e.item.col-lg-4.col-md-6
+					+e.img
+						i.fa.fa-wrench
+					h3 Заголовок
+					p Изготовление мебели только из высококачественных материалов
+	// Секция main_content
+	+b.SECTION.main-content
+		.container
+			h2 OWL Слайдер
+			.owl-carousel.owl-theme
+				.item
+					h3 Слайдер 1
+				.item
+					h3 Слайдер 2
+			h2 Swiper
+			.swiper-container
+				.swiper-wrapper
+					.swiper-slide
+						.slider-img
+							img(src="img/user-photo.jpg")
+						.slider-txt
+							| Slide 1
+					.swiper-slide
+						.slider-img
+							img(src="img/user-photo2.jpg")
+						.slider-txt
+							| Slide 2
+					.swiper-slide
+						.slider-img
+							img(src="img/user-photo.jpg")
+						.slider-txt
+							| Slide 3
+					.swiper-slide
+						.slider-img
+							img(src="img/user-photo2.jpg")
+						.slider-txt
+							| Slide 4
+					.swiper-slide
+						.slider-img
+							img(src="img/user-photo.jpg")
+						.slider-txt
+							| Slide 5
+				.swiper-pagination
+			div Пример checkbox
+			label.check.noselect.click-disabled
+				input(type='checkbox')
+				i.fa-1
+					i.far.fa-square
+				i.fa-2
+					i.far.fa-check-square
+				span первый чек
+			label.check.noselect
+				input(type='checkbox')
+				i.fa-1
+					i.far.fa-square
+				i.fa-2
+					i.far.fa-check-square
+				span второй чек
+			div Пример radio button
+			label.radio.noselect
+				input(type='radio', name='radio')
+				i.fa-1
+					i.far.fa-1.fa-square
+				i.fa-2
+					i.far.fa-check-square
+				span первый чек
+			label.radio.noselect
+				input(type='radio', name='radio', checked='')
+				i.fa-1
+					i.far.fa-square
+				i.fa-2
+					i.far.fa-check-square
+				span второй чек
+			h3 Пример Select на плагине Select2
+				h4 с тегами
+				.select2-wrap
+					select.select2-tags.form-control(multiple)
+						option angular
+						option react
+						option vue
+						option(disabled) ember
+						option backbone
+				h4 обычный
+				.select2-wrap
+					// оставляем пустой option чтобы сработал при инициализации placeholder прописанный в js
+					select.select2
+						option
+						option Lao People's Democratic Republic
+						option react
+						option vue
+						option(disabled) ember
+						option backbone
+						option angular
+						option react
+						option vue
+						option(disabled) ember
+						option backbone

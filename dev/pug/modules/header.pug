@@ -1,0 +1,15 @@
+header(class="header")
+	.container
+		.row
+			.header__logo
+				a(href="/" class="logo" title="Логотип").
+					Ваш Логотип
+			nav.header__nav
+				ul
+					each link,title in nav.navPages
+						li
+							a(href= link)= title
+			.header__modal
+				a(data-effect="mfp-zoom-in" data-info="Обратный звонок" href="#popup" class="open-popup-link" title='Вызов стандартного модального окна') Обратный звонок
+			.header__modal.last
+				a(data-effect="mfp-zoom-in" data-info="Обратный звонок" href="#popup3" class="open-popup-link active" title='Вызов примера модального окна, в виде навигации.') Мобильное меню
